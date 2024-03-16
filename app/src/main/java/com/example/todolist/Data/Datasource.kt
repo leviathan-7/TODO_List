@@ -5,8 +5,8 @@ import com.example.todolist.models.Note
 class Datasource {
     fun loadNotes(): List<Note> {
         return listOf<Note>(
-            Note("make android", false),
-            Note("make android", false),
-            Note("make android", true))
+            Note("андроид", false, "сделать задание по андроиду"),
+            Note("ужин", false, "надо поужинать"),
+            Note("пары", true, "сходить на пары"))
     }
 }
