@@ -1,7 +1,13 @@
 package com.example.todolist.models
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Note(
-    val text: String,
-    var isMade: Boolean,
-    val description: String
+    @PrimaryKey val id: Int,
+    @ColumnInfo(name = "text") val text: String,
+    @ColumnInfo(name = "isMade") var isMade: Boolean,
+    @ColumnInfo(name = "description") val description: String
 )

@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.todolist.Data.Datasource
 import com.example.todolist.models.Note
+import kotlin.concurrent.thread
+
 @Composable
 fun NoteCard(note: Note, modifier: Modifier = Modifier, checked: MutableState<Int>, onNavigateToInf: () -> Unit){
     Card(modifier = modifier, colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)) {
