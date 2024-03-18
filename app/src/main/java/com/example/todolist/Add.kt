@@ -40,9 +40,12 @@ fun AddApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit) {
     val description = remember {mutableStateOf("")}
 
     LazyColumn(modifier = modifier){
+        item {
+            NavBar(text = "New",onNavigateToNotes = onNavigateToNotes)
+        }
         item{
             Text(
-                "Name:",
+                " Name:",
                 fontSize = 25.sp,
                 modifier = Modifier.fillMaxWidth(),
                 color = Color.Blue
@@ -56,7 +59,7 @@ fun AddApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit) {
         }
         item{
             Text(
-                "Description:",
+                " Description:",
                 fontSize = 25.sp,
                 modifier = Modifier.fillMaxWidth(),
                 color = Color.Blue

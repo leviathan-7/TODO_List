@@ -29,9 +29,12 @@ import com.example.todolist.models.Note
 @Composable
 fun InfApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit, note: Note) {
     LazyColumn(modifier = modifier){
+        item {
+            NavBar(text = " Information", onNavigateToNotes = onNavigateToNotes)
+        }
         item{
             Text(
-                "Name:",
+                " Name:",
                 fontSize = 25.sp,
                 modifier = Modifier.fillMaxWidth(),
                 color = Color.Blue
@@ -40,13 +43,13 @@ fun InfApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit, note: N
         item {
             if (note.isMade) {
                 Text(
-                    text = note.text,
+                    text = " "+note.text,
                     fontSize = 25.sp,
                     style = TextStyle(textDecoration = TextDecoration.LineThrough)
                 )
             } else {
                 Text(
-                    text = note.text,
+                    text = " "+note.text,
                     fontSize = 25.sp,
                 )
             }
@@ -59,7 +62,7 @@ fun InfApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit, note: N
         }
         item{
             Text(
-                "Description:",
+                " Description:",
                 fontSize = 25.sp,
                 modifier = Modifier.fillMaxWidth(),
                 color = Color.Blue
@@ -67,7 +70,7 @@ fun InfApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit, note: N
         }
         item{
             Text(
-                note.description,
+                " "+note.description,
                 fontSize = 25.sp,
                 modifier = Modifier.fillMaxWidth(),
             )

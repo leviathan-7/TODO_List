@@ -89,11 +89,11 @@ fun NoteCardList(notesList: List<Note>, modifier: Modifier = Modifier, checked: 
     checked.value = notesList.count { note -> note.isMade }
     LazyColumn(modifier = modifier) {
         item{
-            val text = "TODO list. Total = $total; Checked = ${checked.value} \n"
+            val text = "TODO list. Total: $total; Checked: ${checked.value} \n"
             Text(
                 text,
                 fontSize = 25.sp,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.padding(10.dp).fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 color = Color.Blue
             )
