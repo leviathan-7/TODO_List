@@ -1,5 +1,6 @@
 package com.example.todolist
 
+import android.database.Observable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import com.example.todolist.Data.Datasource
@@ -23,6 +25,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.todolist.models.Note
+import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
 
 @Composable
 fun AddApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit) {
@@ -67,7 +77,6 @@ fun AddApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit) {
         item {
             Button(
                 onClick = {
-
                     onNavigateToNotes()
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Blue)
@@ -82,3 +91,5 @@ fun AddApp(modifier: Modifier = Modifier, onNavigateToNotes: () -> Unit) {
         }
     }
 }
+
+

@@ -13,6 +13,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room.databaseBuilder
 import com.example.todolist.Data.AppDatabase
+import com.example.todolist.Data.AppRepository
+//import com.example.todolist.Data.AppDatabase
+//import com.example.todolist.Data.AppRepository
 import com.example.todolist.models.Note
 import com.example.todolist.models.NoteDao
 import com.example.todolist.ui.theme.TODOListTheme
@@ -21,7 +24,8 @@ import com.example.todolist.ui.theme.TODOListTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        database = databaseBuilder<AppDatabase>(this, AppDatabase::class.java, "appdatabase").build()
+        val database = databaseBuilder<AppDatabase>(this, AppDatabase::class.java, "appdatabase").build()
+        appRepository = AppRepository(database.getNoteDao())
         setContent {
             TODOListTheme {
                 // A surface container using the 'background' color from the theme
@@ -36,7 +40,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-var database: AppDatabase? = null
+var appRepository: AppRepository? = null
 var buttonNote: Note? = null
 
 @Composable
