@@ -17,7 +17,6 @@ import com.example.todolist.Data.AppRepository
 //import com.example.todolist.Data.AppDatabase
 //import com.example.todolist.Data.AppRepository
 import com.example.todolist.models.Note
-import com.example.todolist.models.NoteDao
 import com.example.todolist.ui.theme.TODOListTheme
 
 

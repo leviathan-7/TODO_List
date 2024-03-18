@@ -1,7 +1,6 @@
 package com.example.todolist.Data
 
 import com.example.todolist.models.Note
-import com.example.todolist.models.NoteDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,10 +1,11 @@
-package com.example.todolist.models
+package com.example.todolist.Data
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.todolist.models.Note
 
 @Dao
 interface NoteDao {
