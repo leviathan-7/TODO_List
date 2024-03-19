@@ -1,10 +1,15 @@
 package com.example.todolist.Data
 
+import androidx.lifecycle.LiveData
 import com.example.todolist.models.Note
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class AppRepository(private val noteDao: NoteDao) {
+    fun getAll(): Flow<List<Note>> {
+        return noteDao.all
+    }
     suspend fun insert(note: Note) {
         withContext(Dispatchers.IO) {
             noteDao.insert(note)
@@ -21,11 +26,7 @@ class AppRepository(private val noteDao: NoteDao) {
             noteDao.delete(note)
         }
     }
-    suspend fun getAll(): List<Note> {
-        return withContext(Dispatchers.IO) {
-            return@withContext noteDao.all
-        }
-    }
+
     suspend fun getById(id: Long): Note {
         return withContext(Dispatchers.IO) {
             return@withContext noteDao.getById(id)

@@ -15,6 +15,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -27,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.todolist.Data.Datasource
 import com.example.todolist.models.Note
+import com.example.todolist.ui.theme.NotesViewModel
 import kotlin.concurrent.thread
 
 @Composable
@@ -93,7 +96,9 @@ fun NoteCardList(notesList: List<Note>, modifier: Modifier = Modifier, checked: 
             Text(
                 text,
                 fontSize = 25.sp,
-                modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 color = Color.Blue
             )
@@ -126,8 +131,11 @@ fun NoteCardList(notesList: List<Note>, modifier: Modifier = Modifier, checked: 
 @Composable
 fun NotesApp(onNavigateToAdd: () -> Unit, onNavigateToInf: () -> Unit) {
     val checked = remember { mutableStateOf(0) }
+    //val notesList by notesViewModel!!.notes.observeAsState()
+
     NoteCardList(
         notesList = Datasource().loadNotes(),
+        //notesList = notesList,
         checked = checked,
         onNavigateToAdd = onNavigateToAdd,
         onNavigateToInf = onNavigateToInf

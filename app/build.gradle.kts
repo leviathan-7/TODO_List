@@ -115,4 +115,7 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
+
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 }
