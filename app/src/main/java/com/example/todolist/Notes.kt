@@ -44,6 +44,7 @@ fun NoteCard(note: Note, modifier: Modifier = Modifier, checked: MutableState<In
                     }else{
                         checked.value--
                     }
+                    notesViewModel!!.update(note)
                 }
             )
             Button(
