@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val database = databaseBuilder(this, AppDatabase::class.java, "appdatabase").build()
+        val database = databaseBuilder(this, AppDatabase::class.java, "appdatabase").fallbackToDestructiveMigration().build()
         val repository = AppRepository(database.getNoteDao())
         notesViewModel = NotesViewModel(repository)
 

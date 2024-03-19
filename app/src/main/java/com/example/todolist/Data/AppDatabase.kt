@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.todolist.models.Note
 
 @Database(
-    version = 1,
+    version = 3,
     entities = [Note::class]
 )
 abstract class AppDatabase : RoomDatabase() {

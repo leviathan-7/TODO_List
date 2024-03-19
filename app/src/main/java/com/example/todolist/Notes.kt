@@ -24,13 +24,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.todolist.Data.Datasource
 import com.example.todolist.models.Note
-import com.example.todolist.ui.theme.NotesViewModel
-import kotlin.concurrent.thread
 
 @Composable
 fun NoteCard(note: Note, modifier: Modifier = Modifier, checked: MutableState<Int>, onNavigateToInf: () -> Unit){
@@ -74,7 +70,9 @@ fun NoteCard(note: Note, modifier: Modifier = Modifier, checked: MutableState<In
             }
             Spacer(Modifier.weight(1f))
             Button(
-                onClick = {},
+                onClick = {
+                    notesViewModel!!.delete(note)
+                },
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.background)
             ){
                 Text(
@@ -131,13 +129,14 @@ fun NoteCardList(notesList: List<Note>, modifier: Modifier = Modifier, checked: 
 @Composable
 fun NotesApp(onNavigateToAdd: () -> Unit, onNavigateToInf: () -> Unit) {
     val checked = remember { mutableStateOf(0) }
-    //val notesList by notesViewModel!!.notes.observeAsState()
+    val notesList by notesViewModel!!.notes.observeAsState()
+    if(notesList != null){
+        NoteCardList(
+            notesList = notesList!!,
+            checked = checked,
+            onNavigateToAdd = onNavigateToAdd,
+            onNavigateToInf = onNavigateToInf
+        )
+    }
 
-    NoteCardList(
-        notesList = Datasource().loadNotes(),
-        //notesList = notesList,
-        checked = checked,
-        onNavigateToAdd = onNavigateToAdd,
-        onNavigateToInf = onNavigateToInf
-    )
 }
